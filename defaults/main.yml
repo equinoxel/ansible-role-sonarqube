@@ -1,23 +1,15 @@
 ---
 
 ## General
-sonarqube_image: sonarqube:latest
+sonarqube_image: sonarqube
+sonarqube_db_image: postgres
 
-sonarqube_http_port: 3000
+sonarqube_http_port: 9000
+sonarqube_api_port: 9001
 
 # Sonarqube paths
 sonarqube_root_path: /var/local
-# sonarqube_data_base:  "{{ sonarqube_root_path }}/sonarqube"
 sonarqube_config_path: "{{ sonarqube_root_path }}/conf/sonarqube"
-
-# sonarqube_data_volume: "{{ sonarqube_data_base }}/data"
-# sonarqube_conf_volume: "{{ sonarqube_data_base }}/conf"
-# sonarqube_logs_volume: "{{ sonarqube_data_base }}/logs"
-# sonarqube_extensions_volume: "{{ sonarqube_data_base }}/extensions"
-# sonarqube_bundled_plugins_volume: "{{ sonarqube_data_base }}/bundled_plugins"
-
-# sonarqube_db_volume: "{{ sonarqube_data_base }}/posgresql/db"
-# sonarqube_db_data_volume: "{{ sonarqube_data_base }}/posgresql/data"
 
 sonarqube_db_user: "changeme"
 sonarqube_db_password: "changeme"
@@ -26,13 +18,6 @@ sonarqube_db_password: "changeme"
 #
 sonarqube_skeleton_paths:
   - "{{ sonarqube_config_path }}"
-  # - "{{ sonarqube_data_volume }}"
-  # - "{{ sonarqube_conf_volume }}"
-  # - "{{ sonarqube_logs_volume }}"
-  # - "{{ sonarqube_extensions_volume }}"
-  # - "{{ sonarqube_bundled_plugins_volume }}"
-  # - "{{ sonarqube_db_volume }}"
-  # - "{{ sonarqube_db_data_volume }}"
 
 # Add more templates to be copied into the config
 sonarqube_configuration_files:

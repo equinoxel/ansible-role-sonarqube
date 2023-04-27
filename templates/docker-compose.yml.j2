@@ -3,12 +3,12 @@ version: '3.9'
 services:
   sonarqube:
     image: "{{ sonarqube_image }}"
-    container_name: sonarqube-service
     restart: always
     env_file:
       - "{{ sonarqube_config_path | expanduser }}/env.sonarqube.conf"
     ports:
-      - "{{ sonarqube_http_port }}"
+      - "{{ sonarqube_http_port }}:9000"
+      - "{{ sonarqube_api_port }}:9001"
       # Add more ports if necessary
     networks:
       - sonarqube-net
@@ -22,14 +22,15 @@ services:
       - db
 
   db:
-    image: postgres:12
-    container_name: sonarqube-db
+    image: "{{ sonarqube_db_image }}"
     restart: always
     env_file:
       - "{{ sonarqube_config_path | expanduser }}/env.db.conf"
     volumes:
       - sonarqube_db:/var/lib/postgresql
       - postgresql_data:/var/lib/postgresql/data
+    networks:
+      - sonarqube-net
 
 volumes:
     postgresql_data:
