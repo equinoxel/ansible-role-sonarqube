@@ -7,6 +7,12 @@ sonarqube_db_image: postgres
 sonarqube_http_port: 9000
 sonarqube_api_port: 9001
 
+# Limits
+sonarqube_vm_max_map_count: 524288
+sonarqube_fs_file_max: 131072
+sonarqube_nofile: 131072
+sonarqube_nproc: 8192
+
 # Sonarqube paths
 sonarqube_root_path: /var/local
 sonarqube_config_path: "{{ sonarqube_root_path }}/conf/sonarqube"
