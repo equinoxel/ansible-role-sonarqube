@@ -29,7 +29,7 @@ services:
     image: "{{ sonarqube_db_image }}"
     restart: always
     healthcheck:
-      test: /usr/bin/pg_isready
+      test: /usr/bin/pg_isready -U "{{ sonarqube_db_user }}""
       interval: 5s
       timeout: 10s
       retries: 120
