@@ -33,6 +33,7 @@
     # Type "-" for enforcing both soft and hard resource limits together for more details read `man limits.conf`.
     - { limit_type: '-', limit_item: 'nofile', value: "{{ sonarqube_nofile }}" }
     - { limit_type: '-', limit_item: 'nproc', value: "{{ sonarqube_nproc }}" }
+  become: true
 
 - name: "SONARQUBE | Set up the max files"
   sysctl:
@@ -40,6 +41,7 @@
     value: "{{ sonarqube_fs_file_max }}"
     state: present
     reload: yes
+  become: true
 
 - name: "SONARQUBE | Set up the VM max_map_count"
   sysctl:
@@ -47,3 +49,4 @@
     value: "{{ sonarqube_vm_max_map_count }}"
     state: present
     reload: yes
+  become: true
