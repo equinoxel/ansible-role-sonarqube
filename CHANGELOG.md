@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.2](https://git.laurivan.com/Dev/ansible-role-sonarqube/compare/v1.1.1...v1.1.2) (2023-04-28)
+
+
+### Bug Fixes
+
+* Sudo for limit changes ([f9a9801](https://git.laurivan.com/Dev/ansible-role-sonarqube/commit/f9a98017a3f1d58bf72aa818eb5a0447bcd0b80f))
+
 ### [1.1.1](https://git.laurivan.com/Dev/ansible-role-sonarqube/compare/v1.1.0...v1.1.1) (2023-04-28)
 
 
