@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.1](https://git.laurivan.com/Dev/ansible-role-sonarqube/compare/v1.1.0...v1.1.1) (2023-04-28)
+
+
+### Bug Fixes
+
+* Better healthcheck for sonarqube service. ([1323a7b](https://git.laurivan.com/Dev/ansible-role-sonarqube/commit/1323a7bdf42088952d318100e03b9690e4808b36))
+* Set elastic search parameters. ([d6cdbb6](https://git.laurivan.com/Dev/ansible-role-sonarqube/commit/d6cdbb675932ba812dc95543090bd86d9701424e))
+
 ## 1.1.0 (2023-04-27)
 
 
