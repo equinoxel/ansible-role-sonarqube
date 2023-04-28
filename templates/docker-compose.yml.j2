@@ -4,15 +4,19 @@ services:
   sonarqube:
     image: "{{ sonarqube_image }}"
     restart: always
+    healthcheck:
+      test: wget -qO- http://localhost:9000/api/system/health
+      interval: 10s
+      retries: 5
+      start_period: 5s
+      timeout: 10s
     env_file:
       - "{{ sonarqube_config_path | expanduser }}/env.sonarqube.conf"
     ports:
       - "{{ sonarqube_http_port }}:9000"
       - "{{ sonarqube_api_port }}:9001"
-      # Add more ports if necessary
     networks:
       - sonarqube-net
-    # optional
     volumes:
       - sonarqube_conf:/opt/sonarqube/conf
       - sonarqube_data:/opt/sonarqube/data
@@ -24,6 +28,11 @@ services:
   db:
     image: "{{ sonarqube_db_image }}"
     restart: always
+    healthcheck:
+      test: /usr/bin/pg_isready
+      interval: 5s
+      timeout: 10s
+      retries: 120
     env_file:
       - "{{ sonarqube_config_path | expanduser }}/env.db.conf"
     volumes:
