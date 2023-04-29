@@ -3,4 +3,3 @@
 http:
   "http://localhost:{{ sonarqube_http_port }}/":
     status: 200
-
