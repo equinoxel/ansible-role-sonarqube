@@ -8,7 +8,7 @@
       register: "docker_sock_stat"
 
     - name: "Create docker.sock"
-      ansible.builtin.raw: touch /var/run/docker.sock
+      ansible.builtin.raw: "touch /var/run/docker.sock"
       become: true
       changed_when: false
       when: "not docker_sock_stat.stat.exists"
@@ -21,7 +21,7 @@
       when: "not docker_sock_stat.stat.exists"
 
     - name: "Update apt cache."
-      ansible.builtin.apt: update_cache=yes cache_valid_time=600
+      ansible.builtin.apt: "update_cache=yes cache_valid_time=600"
       when: "ansible_os_family == 'Debian'"
 
     - name: "Install python requests"
