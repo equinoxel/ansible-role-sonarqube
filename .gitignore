@@ -11,6 +11,7 @@ __pycache__
 *.iml
 .idea
 .project
+sonar-project.properties
 
 *.pyc
 **/.vscode
