@@ -4,4 +4,4 @@
     project_src: "{{ sonarqube_config_path | expanduser | realpath }}"
     build: false
   tags:
-    - sonarqube_install
+    - "sonarqube_install"

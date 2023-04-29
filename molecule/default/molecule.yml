@@ -1,37 +1,37 @@
 ---
 dependency:
-  name: galaxy
+  name: "galaxy"
   options:
     ignore-certs: true
     ignore-errors: true
-    role-file: molecule/requirements.yml
-    requirements-file: molecule/requirements.yml
+    role-file: "molecule/requirements.yml"
+    requirements-file: "molecule/requirements.yml"
 driver:
-  name: docker
+  name: "docker"
 lint: |
   yamllint .
   ansible-lint .
 platforms:
-  - name: sonarqube
+  - name: "sonarqube"
     groups:
-      - sonarqube_group
+      - "sonarqube_group"
     image: "geerlingguy/docker-${MOLECULE_DISTRO:-centos8}-ansible:latest"
     privileged: true
     pre_build_image: true
     capabilities:
-      - SYS_ADMIN
+      - "SYS_ADMIN"
     tmpfs:
-      - /tmp
-      - /run
-      - /run/lock
+      - "/tmp"
+      - "/run"
+      - "/run/lock"
     volumes:
       - '/sys/fs/cgroup:/sys/fs/cgroup:ro'
       - '/var/run/docker.sock:/tmp/docker_mounted.sock'
     command: '/lib/systemd/systemd'
     stop_signal: 'RTMIN+3'
 provisioner:
-  name: ansible
+  name: "ansible"
   playbooks:
-    converge: ${MOLECULE_PLAYBOOK:-converge.yml}
+    converge: "${MOLECULE_PLAYBOOK:-converge.yml}"
 verifier:
-  name: ansible
+  name: "ansible"

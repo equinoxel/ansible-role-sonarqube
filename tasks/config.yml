@@ -1,7 +1,7 @@
 ---
 - name: "SONARQUBE | Set up directories"
   ansible.builtin.file:
-    state: directory
+    state: "directory"
     path: "{{ item }}"
     owner: "{{ ansible_effective_user_id }}"
     group: "{{ ansible_effective_group_id }}"
@@ -9,7 +9,7 @@
   with_items:
     - "{{ sonarqube_skeleton_paths }}"
   tags:
-    - sonarqube_configure
+    - "sonarqube_configure"
   become: true
 
 - name: "SONARQUBE | Write configuration files"
@@ -20,7 +20,7 @@
   with_items:
     - "{{ sonarqube_configuration_files }}"
   tags:
-    - sonarqube_configure
+    - "sonarqube_configure"
 
 - name: "SONARQUBE | Set up nofiles and nproc for ansible user"
   community.general.pam_limits:
@@ -33,20 +33,26 @@
     # Type "-" for enforcing both soft and hard resource limits together for more details read `man limits.conf`.
     - { limit_type: '-', limit_item: 'nofile', value: "{{ sonarqube_nofile }}" }
     - { limit_type: '-', limit_item: 'nproc', value: "{{ sonarqube_nproc }}" }
+  tags:
+    - "sonarqube_configure"
   become: true
 
 - name: "SONARQUBE | Set up the max files"
   ansible.posix.sysctl:
-    name: fs.file-max
+    name: "fs.file-max"
     value: "{{ sonarqube_fs_file_max }}"
-    state: present
+    state: "present"
     reload: true
+  tags:
+    - "sonarqube_configure"
   become: true
 
 - name: "SONARQUBE | Set up the VM max_map_count"
   ansible.posix.sysctl:
-    name: vm.max_map_count
+    name: "vm.max_map_count"
     value: "{{ sonarqube_vm_max_map_count }}"
-    state: present
+    state: "present"
     reload: true
+  tags:
+    - "sonarqube_configure"
   become: true

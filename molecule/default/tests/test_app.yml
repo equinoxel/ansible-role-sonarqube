@@ -1,12 +1,6 @@
 ---
-## TODO: Remember to adapt goss tests to your convenience
 
+http:
+  "http://localhost:{{ sonarqube_http_port }}/":
+    status: 200
 
-## Check if ports are really exposed
-# port:
-# # Check port at IPv6
-# # https://github.com/aelsabbahy/goss/issues/177
-#   tcp6:<port>:
-#     listening: true
-#     ip:
-#     - '::'

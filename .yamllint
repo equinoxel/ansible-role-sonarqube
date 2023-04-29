@@ -31,3 +31,9 @@ rules:
   new-lines:
     type: unix
   truthy: disable
+  quoted-strings:
+    quote-type: any
+    required: only-when-needed
+  key-ordering: disable
+  document-end:
+    present: false

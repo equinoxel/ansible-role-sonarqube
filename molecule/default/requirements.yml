@@ -1,4 +1,4 @@
 ---
 roles:
-  - geerlingguy.docker
+  - "geerlingguy.docker"
 collections: []
