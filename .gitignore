@@ -6,6 +6,7 @@ __pycache__
 .molecule
 .cache
 .venv
+.scannerwork
 
 *.iml
 .idea

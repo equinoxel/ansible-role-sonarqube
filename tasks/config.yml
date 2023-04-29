@@ -40,7 +40,7 @@
     name: fs.file-max
     value: "{{ sonarqube_fs_file_max }}"
     state: present
-    reload: yes
+    reload: true
   become: true
 
 - name: "SONARQUBE | Set up the VM max_map_count"
@@ -48,5 +48,5 @@
     name: vm.max_map_count
     value: "{{ sonarqube_vm_max_map_count }}"
     state: present
-    reload: yes
+    reload: true
   become: true
