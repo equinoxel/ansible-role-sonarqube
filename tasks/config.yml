@@ -23,7 +23,7 @@
     - sonarqube_configure
 
 - name: "SONARQUBE | Set up nofiles and nproc for ansible user"
-  pam_limits:
+  community.general.pam_limits:
     domain: "*"
     limit_type: "{{ item.limit_type }}"
     limit_item: "{{ item.limit_item }}"
@@ -36,7 +36,7 @@
   become: true
 
 - name: "SONARQUBE | Set up the max files"
-  sysctl:
+  ansible.posix.sysctl:
     name: fs.file-max
     value: "{{ sonarqube_fs_file_max }}"
     state: present
@@ -44,7 +44,7 @@
   become: true
 
 - name: "SONARQUBE | Set up the VM max_map_count"
-  sysctl:
+  ansible.posix.sysctl:
     name: vm.max_map_count
     value: "{{ sonarqube_vm_max_map_count }}"
     state: present
